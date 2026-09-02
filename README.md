@@ -60,18 +60,27 @@ Local HTML links, fragment targets, image availability, structured JSON, XML sit
 
 ## Update the existing site and activate service requests
 
-Upload the updated extracted files into the EXISTING comtel-website repository and commit. Include index.html, styles.css, thank-you.html and CNAME. Keep assets/comtel-company.jpg. The CNAME contains www.comtelsolutions.com. No DNS changes are needed.
+Upload the updated extracted files into the EXISTING comtel-website repository and commit. Include index.html, styles.css, service-request.js, thank-you.html and CNAME. Keep assets/comtel-company.jpg. The CNAME contains www.comtelsolutions.com. No DNS changes are needed.
 
-This form uses https://formsubmit.co/ to forward requests to wasimelmtni@gmail.com. Visitor submissions pass through that third-party service. CAPTCHA remains enabled. Required browser fields include customer type, service, name, phone, email, address and description. Customers can choose phone or email replies. The form does not send SMS, create calendar bookings or guarantee a response time.
+This form uses https://formsubmit.co/ to forward requests to wasimelmtni@gmail.com. Visitor submissions pass through that third-party service. The browser uses the FormSubmit AJAX endpoint. The native fallback uses the standard FormSubmit POST endpoint. Required browser fields include customer type, service, name, phone, email, address and description. Customers can choose phone or email replies. The form does not send SMS, create calendar bookings or guarantee a response time.
 
 Activation (required before offering the form to customers):
 1. Wait for the updated site to publish and HTTPS to work.
 2. Open https://www.comtelsolutions.com/#service-call and submit a test using your real contact details. Put TEST — please ignore in the description.
-3. Complete the FormSubmit spam check.
+3. Read the on-page result. If prompted by the native fallback, complete the FormSubmit spam check.
 4. Open wasimelmtni@gmail.com and find the FormSubmit activation message, including Spam if necessary. Click its confirmation/activation link.
-5. Submit a SECOND test after activation. Confirm the service request email arrives, every field is included, and Reply uses the submitted customer email. Also confirm the thank-you page opens.
+5. Submit a SECOND test after activation. Confirm the service request email arrives, every field is included, and Reply uses the submitted customer email. Also confirm the on-page status shows an accepted submission.
 6. If activation or delivery fails, customers can call or use the email fallback shown below the form. Do not treat email delivery as verified until the second test arrives.
 
 The endpoint and field configuration have been checked locally. No live form submission, activation email, or inbox delivery test was performed by the assistant.
 
 FormSubmit documentation: https://formsubmit.co/
+
+
+## Browser submission update
+
+service-request.js submits directly from the webpage using FormSubmit AJAX. Customers do not need an email app, and normal submissions do not navigate away. On an error or setup warning, the customer details are retained. A successful API response indicates acceptance by the service, not independently verified inbox delivery. Phone links intentionally open the device calling application; visitors should use Request a service call to send a browser request.
+
+After uploading ALL updated files, refresh the live site with Ctrl+Shift+R. Opening a ZIP preview from your computer is not a delivery test. Check Gmail for the one-time FormSubmit activation message and confirm it. Then submit a fresh test from the live site and verify receipt in your inbox. You do not need to buy a plan or register a FormSubmit account for this setup.
+
+Validation: JavaScript syntax and simulated accepted, rejected, activation, network and malformed-response paths were tested locally. No real email was sent and inbox delivery remains unverified.
