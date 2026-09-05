@@ -17,7 +17,7 @@
     button.disabled = true;
     button.textContent = 'Sending request…';
     status.dataset.state = 'pending';
-    status.textContent = 'Sending your service request. Please keep this page open.';
+    status.textContent = 'Sending your request. Please keep this page open.';
     const controller = new AbortController();
     const timer = setTimeout(() => controller.abort(), 25000);
     try {
@@ -39,7 +39,7 @@
         return;
       }
       status.dataset.state = 'success';
-      status.textContent = 'Your request was accepted for submission. Comtel will follow up to discuss service and scheduling. This is not an appointment confirmation. For urgent equipment problems, call (832) 213-6736.';
+      status.textContent = 'Your request was accepted for submission. Comtel will follow up to discuss service, your project, or your equipment inquiry. This is not an appointment or purchase confirmation. For urgent service problems, call (832) 213-6736.';
       form.reset();
     } catch (error) {
       status.dataset.state = 'error';
@@ -48,7 +48,7 @@
       clearTimeout(timer);
       sending = false;
       button.disabled = false;
-      button.textContent = 'Send service request';
+      button.textContent = 'Send request';
     }
   });
 })();
